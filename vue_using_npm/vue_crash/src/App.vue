@@ -7,6 +7,19 @@ export default {
       tasks: ['one', 'two', 'three'],
       link: 'https://github.com/kamrulWSIT/vue_practice'
     }
+  },
+  methods: {
+    toggleStatus() {
+      if (this.status === 'active') {
+        this.status = 'pending'
+      }
+      else if (this.status === 'pending') {
+        this.status = 'inactive'
+      }
+      else {
+        this.status = 'active'
+      }
+    }
   }
 }
 </script>
@@ -25,4 +38,10 @@ export default {
   </ul>
   <a v-bind:href="link">Click for project repo</a>
   <a :href="link">Click for project repo</a>
+  <br>
+  <br>
+
+  <button v-on:click="toggleStatus">click me</button>
+  <button @click="toggleStatus">click me</button>
+
 </template>
