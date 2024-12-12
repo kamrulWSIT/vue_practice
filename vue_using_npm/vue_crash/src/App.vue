@@ -1,27 +1,20 @@
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const name = ref('Kamrul Hasan');
-    const status = ref('active');
-    const tasks = ref(['one', 'two', 'three']);
-    const toggleStatus = () => {
-      if (status.value === 'active') {
-        status.value = 'pending'
-      }
-      else if (status.value === 'pending') {
-        status.value = 'inactive'
-      }
-      else {
-        status.value = 'active'
-      }
-    };
-    return  {
-      name, status, tasks, toggleStatus,
-    }
-  },
-}
+const name = ref('Kamrul Hasan');
+const status = ref('active');
+const tasks = ref(['one', 'two', 'three']);
+const toggleStatus = () => {
+  if (status.value === 'active') {
+    status.value = 'pending'
+  }
+  else if (status.value === 'pending') {
+    status.value = 'inactive'
+  }
+  else {
+    status.value = 'active'
+  }
+};
 
 </script>
 
@@ -39,7 +32,7 @@ export default {
   <ul>
     <li v-for="task in tasks" :key="task">{{ task }}</li>
   </ul>
- 
+
 
   <button @click="toggleStatus">change status</button>
 
