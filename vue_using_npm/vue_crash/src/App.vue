@@ -4,6 +4,8 @@ import { ref } from 'vue';
 const name = ref('Kamrul Hasan');
 const status = ref('active');
 const tasks = ref(['one', 'two', 'three']);
+const newTask = ref('');
+
 const toggleStatus = () => {
   if (status.value === 'active') {
     status.value = 'pending'
@@ -16,6 +18,13 @@ const toggleStatus = () => {
   }
 };
 
+const addTask = () => {
+  if (newTask.value.trim() !== '') {
+    tasks.value.push(newTask.value);
+    newTask.value = '';
+  }
+}
+
 </script>
 
 <template>
@@ -27,6 +36,11 @@ const toggleStatus = () => {
   <p v-else-if="status === 'pending'">user is pending</p>
   <p v-else>user is inactive</p>
 
+  <form @submit.prevent="addTask">
+    <label for="newTask">Add Task</label>
+    <input type="text" for="newTask" name="newTask" v-model="newTask">
+    <button type="submit">Submit</button>
+  </form>
 
   <h3>Tasks</h3>
   <ul>
