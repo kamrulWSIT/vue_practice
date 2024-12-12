@@ -3,7 +3,9 @@ export default {
   data() {
     return {
       name: "Kamrul Hasan",
-      status: 'pending'
+      status: 'pending',
+      tasks: ['one', 'two', 'three'],
+      link: 'https://github.com/kamrulWSIT/vue_practice'
     }
   }
 }
@@ -16,4 +18,11 @@ export default {
   <p v-if="status === 'active'">user is active</p>
   <p v-else-if="status === 'pending'">user is pending</p>
   <p v-else>user is inactive</p>
+
+  <h3>Tasks</h3>
+  <ul>
+    <li v-for="task in tasks" :key="task">{{ task }}</li>
+  </ul>
+  <a v-bind:href="link">Click for project repo</a>
+  <a :href="link">Click for project repo</a>
 </template>
